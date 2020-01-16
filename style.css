@@ -1,0 +1,64 @@
+@import url('https://rsms.me/inter/inter.css');
+
+html {
+	font-family: 'Inter', Helvetica, Tahoma, Verdana, sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+	html {
+		font-family: 'Inter var', sans-serif;
+	}
+}
+
+html, body, h1 {
+	margin: 0;
+}
+
+h1 {
+	padding: 1em;
+}
+
+.center-text {
+	text-align: center;
+}
+
+.error {
+	padding: 1em;
+	margin: 1em;
+	border: 0.25em solid #bb0000;
+	color: #bb0000;
+}
+
+.big-text {
+	font-size: 3em;
+}
+
+#app {
+	margin-bottom: 5em;
+}
+
+.flex-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.flex-col {
+	flex: 0 0 18em;
+	padding: 1em;
+	margin: 1em;
+	border: 0.25em solid #ddd;
+}
+
+.station-name {
+	font-size: 1.25em;
+	font-weight: bold;
+	padding-bottom: 0.5em;
+}
+
+.width50 {
+	display: inline-block;
+	width: 47%;
+	padding: 1%;
+	text-align: center;
+}

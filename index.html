@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Oslo Bysykkelstasjoner</title>
+
+		<link rel="stylesheet" href="style.css">
+
+		<script src="util.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="gbfs.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1 class="center-text">Oslo Bysykkelstasjoner &#x1F6B2;</h1>
+
+			<div id="status" class="center-text">
+				{{ status }}
+				<span v-if="progress"> ({{ progress }})%</span>
+			</div>
+
+			<div class="error center-text big-text" v-if="error !== undefined">
+				{{ error }}
+			</div>
+
+			<div id="stations" class="flex-grid">
+				<div class="flex-col" v-for="station in stations">
+					<div class="station-name center-text">{{ station.name }}</div>
+					<div class="width50">Låser:</div>
+					<div class="width50">Sykler:</div>
+					<div class="width50 big-text">{{ station.num_docks_available }}</div>
+					<div class="width50 big-text">{{ station.num_bikes_available }}</div>
+				</div>
+			</div>
+
+			<div class="center-text">Sanntidsdata er levert av <a href="https://oslobysykkel.no/apne-data/sanntid">Oslo Bysykkel</a></div>
+		</div>
+
+		<script>
+			init('stigmh-sykkelmonitor');
+		</script>
+	</body>
+</html>
