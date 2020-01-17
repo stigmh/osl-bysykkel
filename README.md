@@ -6,7 +6,7 @@ JavaScript demonstation of the Oslo City Bike GBFS real time data.
 
 Run the live demo: https://stigmh.github.io/osl-bysykkel/
 
-Or clone the source and run `index.html` locally in your browser:
+Or clone the source and run [index.html](index.html) locally in your browser:
 
 ```
 git clone https://github.com/stigmh/osl-bysykkel.git
@@ -22,5 +22,5 @@ sensible-browser index.html
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
