@@ -19,9 +19,16 @@ function getData(url, desc) {
 
 	return new Promise(function dataPromise(resolve, reject) {
 		Ajax(url, {
-			headers {
-				'Client-Identifier': CID
-			},
+			/**
+			 * The API wants us to provide a Client-Identifier
+			 * request header. But their server's 
+			 * access-control-expose-headers response header
+			 * does not allow us to provide it. 
+			 * 
+			 * headers {
+			 *	'Client-Identifier': CID
+			 *},
+			 */
 			success: function(data) {
 				App.progress = undefined;
 				console.log(data);
