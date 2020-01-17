@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, inital-scale=1" />
 		<title>Oslo Bysykkelstasjoner</title>
 
 		<link rel="stylesheet" href="style.css">
@@ -14,7 +15,9 @@
 		<div id="app">
 			<h1 class="center-text">Oslo Bysykkelstasjoner &#x1F6B2;</h1>
 
-			<noscript>Denne siden krever JavaScript. Vennligst aktiver det i din nettleser.</noscript>
+			<noscript class="center-text big-text">
+				Denne siden krever JavaScript. Vennligst aktiver det i din nettleser.
+			</noscript>
 
 			<div id="status" class="center-text">
 				{{ status }}
@@ -28,8 +31,8 @@
 			<div id="stations" class="flex-grid">
 				<div class="flex-col" v-for="station in stations">
 					<div class="station-name center-text">{{ station.name }}</div>
-					<div class="width50">Låser:</div>
-					<div class="width50">Sykler:</div>
+					<div class="width50">Ledige låser:</div>
+					<div class="width50">Ledige sykler:</div>
 					<div class="width50 big-text">{{ station.num_docks_available }}</div>
 					<div class="width50 big-text">{{ station.num_bikes_available }}</div>
 				</div>
