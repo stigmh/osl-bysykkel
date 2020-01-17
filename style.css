@@ -22,7 +22,7 @@ h1 {
 	text-align: center;
 }
 
-.error {
+noscript, .error {
 	padding: 1em;
 	margin: 1em;
 	border: 0.25em solid #bb0000;
