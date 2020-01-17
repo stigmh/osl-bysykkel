@@ -31,7 +31,6 @@ function getData(url, desc) {
 			 */
 			success: function(data) {
 				App.progress = undefined;
-				console.log(data);
 				resolve(data);
 			},
 			progress: function(loaded, total) {
@@ -39,7 +38,7 @@ function getData(url, desc) {
 			},
 			error: function(code, error) {
 				App.status = 'Feil ved henting av ' + desc.toLowerCase();
-				reject((error ? error : 'AJAX error') + '(' + code + ')');
+				reject((error ? error : 'AJAX error') + ' (' + code + ')');
 			}
 		});
 	});

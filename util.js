@@ -23,8 +23,12 @@ window.addEventListener('error', function errorListener(e) {
 window.addEventListener('unhandledrejection', function rejectionListener(e) {
 	var msg = 'Unknown rejection';
 
-	if (e.reason && e.reason.hasOwnProperty('message')) {
-		msg = e.reason.message;
+	if (e.reason !== undefined) {
+		if (typeof e.reason === 'string') {
+			msg = e.reason;
+		} else if (e.reason.hasOwnProperty('message')) {
+			msg = e.reason.message;
+		}
 	}
 
 	ErrorHandler(msg);
