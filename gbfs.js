@@ -1,7 +1,7 @@
 var App;
-var Citybike;
 
 const GBFS = 'https://gbfs.urbansharing.com/oslobysykkel.no/';
+const CID  = 'stigmh-sykkelmonitor';
 
 
 /* Replace weak error handler */
@@ -19,6 +19,9 @@ function getData(url, desc) {
 
 	return new Promise(function dataPromise(resolve, reject) {
 		Ajax(url, {
+			headers {
+				'Client-Identifier': CID
+			},
 			success: function(data) {
 				App.progress = undefined;
 				console.log(data);
@@ -93,7 +96,7 @@ function refreshAfter(seconds)
 }
 
 
-function init(clientIdentifier) {
+function init() {
 	App = new Vue({
 		el: '#app',
 		data: {
