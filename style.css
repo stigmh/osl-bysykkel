@@ -66,3 +66,10 @@ noscript, .error {
 	padding: 1%;
 	text-align: center;
 }
+
+@media (prefers-color-scheme: dark) {
+	html, body {
+		background-color: #000;
+		color: #fff;
+	}
+}
