@@ -59,7 +59,7 @@ function Ajax(url, config) {
 	xmlHTTP.onload = function ajaxOnLoad() {
 		if ((this.status.toString())[0] != 2) {
 			if (config.error !== undefined) {
-				config.error(this.status, 'Bad AJAX request');
+				return config.error(this.status, 'Bad AJAX request');
 			} else {
 				throw new Error('Bad AJAX request ' + this.code);
 			}
