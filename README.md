@@ -15,7 +15,7 @@ cd osl-bysykkel
 sensible-browser index.html
 ```
 
-*Note* that you have to modify the Mapbox _accessToken_ in [gbfs.html](gbfs.html)
+*Note* that you should modify the Mapbox _accessToken_ in [gbfs.html](gbfs.html)
 with your own token to render the map locally or on another server.
 
 ## Unit tests (QUnit)

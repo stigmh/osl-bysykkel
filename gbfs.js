@@ -142,8 +142,6 @@ function getPosition()
 
 function initMap()
 {
-	var token;
-
 	Map = L.map('mapid').setView([59.913536, 10.755783], 19);
 
 	L.tileLayer(
@@ -157,7 +155,7 @@ function initMap()
 			maxZoom: 20,
 			minZoom: 4,
 			id: 'mapbox/streets-v11',
-			accessToken: 'pk.eyJ1Ijoic3RpZ21oYSIsImEiOiJjazVzbHJzMGgwbmNmM25tbDVwN3cyM3h1In0.EefcEBwXmNxyXLHycH9djg'
+			accessToken: 'pk.eyJ1Ijoic3RpZ21oYSIsImEiOiJjazVzaHlvZ2QwbWE0M3FwMm5jeW15czVjIn0.oEam0XEmFWlFBXBQUaYEzg'
 		}
 	).addTo(Map);
 	getPosition();
