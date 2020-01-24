@@ -10,6 +10,10 @@ html {
 	}
 }
 
+html, body {
+	height: 100%;
+}
+
 html, body, h1 {
 	margin: 0;
 }
@@ -20,6 +24,16 @@ h1 {
 
 noscript {
 	display: block;
+}
+
+#app {
+	margin-bottom: 5em;
+	height: 100%;
+}
+
+#mapid {
+	margin: 2em 0em;
+	height: 80%;
 }
 
 .center-text {
@@ -35,10 +49,6 @@ noscript, .error {
 
 .big-text {
 	font-size: 3em;
-}
-
-#app {
-	margin-bottom: 5em;
 }
 
 .flex-grid {

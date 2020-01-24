@@ -1,4 +1,6 @@
 var App;
+var Map;
+var MapMarkers = {};
 
 const GBFS = 'https://gbfs.urbansharing.com/oslobysykkel.no/';
 const CID  = 'stigmh-sykkelmonitor';
@@ -77,7 +79,31 @@ function updateDOM(stations, status)
 		}
 	);
 
+	updateMarkers();
+
 	refreshAfter(30);
+}
+
+
+function updateMarkers()
+{
+	var i;
+	for (i in App.stations) {
+		var dom = '<div class="station-name center-text">' + App.stations[i].name
+			+ '</div><div class="width50">Ledige låser:</div>'
+			+ '<div class="width50">Ledige sykler:</div>'
+			+ '<div class="width50 big-text">' + App.stations[i].num_docks_available + '</div>'
+			+ '<div class="width50 big-text">' + App.stations[i].num_bikes_available + '</div>';
+
+		if (!MapMarkers.hasOwnProperty(App.stations[i].station_id)) {
+			MapMarkers[App.stations[i].station_id] = L.marker(
+				[App.stations[i].lat, App.stations[i].lon]).addTo(Map);
+
+			MapMarkers[App.stations[i].station_id].bindPopup(dom);
+		} else {
+			MapMarkers[App.stations[i].station_id]._popup.setContent(dom);
+		}
+	}
 }
 
 
@@ -102,6 +128,42 @@ function refreshAfter(seconds)
 }
 
 
+function getPosition()
+{
+	navigator.geolocation.getCurrentPosition(function gotPosition(pos) {
+		Map.setView([ pos.coords.latitude, pos.coords.longitude ]);
+	}, function failedPosition(err) {},{
+		enableHighAccuracy: true,
+		timeout: 5000,
+		maximumAge: 0
+	});
+}
+
+
+function initMap()
+{
+	var token;
+
+	Map = L.map('mapid').setView([59.913536, 10.755783], 19);
+
+	L.tileLayer(
+		'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',
+		{
+			attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">'
+				+ 'OpenStreetMap</a> contributors, '
+				+ '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+				+ ', Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>'
+				+ ', Bike data <a href="https://oslobysykkel.no/apne-data/sanntid">Oslo Bysykkel</a>',
+			maxZoom: 20,
+			minZoom: 4,
+			id: 'mapbox/streets-v11',
+			accessToken: 'pk.eyJ1Ijoic3RpZ21oYSIsImEiOiJjazVzbHJzMGgwbmNmM25tbDVwN3cyM3h1In0.EefcEBwXmNxyXLHycH9djg'
+		}
+	).addTo(Map);
+	getPosition();
+}
+
+
 function init() {
 	App = new Vue({
 		el: '#app',
@@ -113,5 +175,6 @@ function init() {
 		}
 	});
 
+	initMap();
 	update();
 }

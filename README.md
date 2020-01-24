@@ -1,6 +1,7 @@
 # Oslo City Bike Overview
 
-JavaScript demonstation of the Oslo City Bike GBFS real time data.
+JavaScript demonstation of the Oslo City Bike GBFS real time data
+utilizing a Leaflet Mapbox map.
 
 ## Usage
 
@@ -13,6 +14,9 @@ git clone https://github.com/stigmh/osl-bysykkel.git
 cd osl-bysykkel
 sensible-browser index.html
 ```
+
+*Note* that you have to modify the Mapbox _accessToken_ in [gbfs.html](gbfs.html)
+with your own token to render the map locally or on another server.
 
 ## Unit tests (QUnit)
 
@@ -32,6 +36,8 @@ sensible-browser tests.html
 - [GBFS format](https://github.com/NABSA/gbfs/blob/master/gbfs.md)
 - [Vue.js](https://vuejs.org/v2/api/)
 - [QUnit](https://api.qunitjs.com/)
+- [Leaflet](https://leafletjs.com/reference-1.6.0.html)
+- [Mapbox](https://www.mapbox.com/)
 
 ## License
 

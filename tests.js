@@ -222,11 +222,17 @@ function getStatusTest(assert) {
 
 function updateDOMTest(assert) {
 	var originalRefresh = refreshAfter;
+	var originalUpdateMarkers = updateMarkers;
 
 	refreshAfter = function fakeRefresh(time) {
 		assert.strictEqual(typeof time, 'number', 'update gives sane number');
 		assert.ok((time > 0), `refresh interval is positive (${time})`);
 		refreshAfter = originalRefresh;
+	};
+
+	updateMarkers = function fakeUpdateMarkers() {
+		assert.ok(1, 'triggers updateMarkers');
+		updateMarkers = originalUpdateMarkers;
 	};
 
 	updateDOM(dataSet0, dataSet1);
@@ -288,12 +294,18 @@ function updateTest(assert) {
 
 
 function initTest(assert) {
-	assert.expect(4);
+	assert.expect(5);
 	var originalUpdate = update;
+	var originalInitMap = initMap;
 
 	update = function fakeInitUpdate() {
 		assert.ok(1, 'init calls update');
 		update = originalUpdate;
+	};
+
+	initMap = function fakeInitMap() {
+		assert.ok(1, 'init triggers initMap');
+		initMap = originalInitMap;
 	};
 
 	Vue = function (obj) {
